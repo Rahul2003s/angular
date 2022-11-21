@@ -12,6 +12,15 @@ export class AppComponent {
   val : string = "";
   dis : boolean = true;
   show:boolean=true;
+  title1 : string = "";
+  color : string = "blue";
+  title_s(){
+    if (this.show) {
+      this.title="Count";
+    }else {
+      this.title="Text";
+    }
+  }
   increment() {
     this.dis=false;
     this.c=this.c+1;

@@ -1,22 +1,25 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">primary</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
-            aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand" href="#">{{title}}</a>
         <div class="collapse navbar-collapse" id="navbarID">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" (click)="show=false" href="#">Text</a>
-                <a class="nav-link active" aria-current="page" (click)="show=true" href="#">Count</a>
+                <a class="nav-link active btn btn-warning m-1" aria-current="page" (click)="show=false" href="#">Text</a>
+                <a class="nav-link active btn btn-danger m-1" aria-current="page" (click)="show=true" href="#">Count</a>
             </div>
         </div>
-    </div>
+    </div>  
 </nav>
+
 <div *ngIf="show; then count else text"></div>
+
 <ng-template #count>
-<div class="container m-5 text-center  text-bg-dark">
-<h1>Count</h1>  
+<div class="container m-5 text-center">
+<div [ngSwitch]="color">
+    <h1 *ngSwitchCase="'red'" style="color: red;">Count</h1>
+    <h1 *ngSwitchCase="'blue'" style="color: blue;">Count</h1>
+    <h1 *ngSwitchCase="'green'" style="color: green;">Count</h1>  
+    <h1 *ngSwitchDefault>Count</h1>
+</div>
 <h2>{{c}}</h2> <!-- inter polation-->
 <button type="button" class="btn btn-primary" (click)="increment()">incriment</button>
 <button type="button" class="btn btn-danger m-2" [disabled]=dis (click)="decriment()">decriment</button><!-- Property binding-->
@@ -24,7 +27,7 @@
 </div>
 </ng-template>
 <ng-template #text>
-<div class="container text-center text-bg-dark" style="width: 50%">
+<div class="container text-center text-bg-dark " style="width: 50%">
     <h1>{{val}}</h1><!-- inter polation-->
     <div class="mb-3">
       <label for="" class="form-label">type something!!..</label>
