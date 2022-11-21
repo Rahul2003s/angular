@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'count';
   c : number = 0;
+  page : string ="";
   val : string = "";
   dis : boolean = true;
   show:boolean=true;
@@ -40,6 +41,9 @@ export class AppComponent {
 
   print_name(c:string){
     this.val=c
+  }
+  getdata(data:any){
+    console.log(data);
   }
   }
 
