@@ -1,3 +1,20 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">primary</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
+            aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarID">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" (click)="show=false" href="#">Text</a>
+                <a class="nav-link active" aria-current="page" (click)="show=true" href="#">Count</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div *ngIf="show; then count else text"></div>
+<ng-template #count>
 <div class="container m-5 text-center  text-bg-dark">
 <h1>Count</h1>  
 <h2>{{c}}</h2> <!-- inter polation-->
@@ -5,12 +22,14 @@
 <button type="button" class="btn btn-danger m-2" [disabled]=dis (click)="decriment()">decriment</button><!-- Property binding-->
 <button type="button" class="btn btn-warning" [disabled]=dis (click)="reset()">reset</button>
 </div>
+</ng-template>
+<ng-template #text>
 <div class="container text-center text-bg-dark" style="width: 50%">
     <h1>{{val}}</h1><!-- inter polation-->
     <div class="mb-3">
       <label for="" class="form-label">type something!!..</label>
       <input type="text" #b (keyup)="print_name(b.value)" class="form-control" aria-describedby="helpId" placeholder="">
-      <small id="helpId" class="form-text text-muted">Help text</small>
+        <small id="helpId" class="form-text text-muted">Help text</small>
     </div>
 </div>
-
+</ng-template>

@@ -11,6 +11,7 @@ export class AppComponent {
   c : number = 0;
   val : string = "";
   dis : boolean = true;
+  show:boolean=true;
   increment() {
     this.dis=false;
     this.c=this.c+1;
