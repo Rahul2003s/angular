@@ -5,14 +5,14 @@
             <div class="navbar-nav">
                 <a class="nav-link active btn btn-warning m-1" aria-current="page" (click)="show=false" href="#">Text</a>
                 <a class="nav-link active btn btn-danger m-1" aria-current="page" (click)="show=true" href="#">Count</a>
-                <a class="nav-link active btn btn-danger m-1" aria-current="page" (click)="page='form'" href="#">form</a>
+                <a class="nav-link active btn btn-warning m-1" aria-current="page" (click)="page=true" href="#">form</a>
             </div>
         </div>
     </div>  
 </nav>
 
 <div *ngIf="show; then count else text"></div>
-
+<div *ngIf="page; then form"></div>
 <ng-template #count>
 <div class="container m-5 text-center">
 <div [ngSwitch]="color">
@@ -39,21 +39,38 @@
 </ng-template>
 
 <ng-template #form>
-
+    <form #basicForm="ngForm" (ngSubmit)="getdata(basicForm.value)">
+        <div class="form-check form-check-inline">
+            <label class="form-check-label" for="">Name</label>
+            <input type="text" class="form-control" ngModel name="name" id="name" aria-describedby="emailHelpId" placeholder="type name">
+        </div>
+      <div class="mb-3 form-check-inline">
+        <label for="" class="form-label">Email</label>
+        <input type="email" class="form-control" ngModel name="email" id="email" aria-describedby="emailHelpId" placeholder="abc@mail.com">
+     </div>
+      <div class="mb-3 form-check-inline">
+        <label for="" class="form-label">Password</label>
+        <input type="password" class="form-control" ngModel name="pass" id="pass" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </ng-template>
 
-<form #basicForm="ngForm" (ngSubmit)="getdata(basicForm.value)">
-    <div class="form-check form-check-inline">
-        <label class="form-check-label" for="">Name</label>
-        <input type="text" class="form-control" ngModel name="name" id="name" aria-describedby="emailHelpId" placeholder="type name">
-    </div>
-  <div class="mb-3 form-check-inline">
-    <label for="" class="form-label">Email</label>
-    <input type="email" class="form-control" ngModel name="email" id="email" aria-describedby="emailHelpId" placeholder="abc@mail.com">
- </div>
-  <div class="mb-3 form-check-inline">
-    <label for="" class="form-label">Password</label>
-    <input type="password" class="form-control" ngModel name="pass" id="pass" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="table-responsive">
+    <table class="table table-primary">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">moblie number</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let obj of tables">
+            <tr class="">
+                <td scope="row">{{obj.name}}</td>
+                <td>{{obj.email}}</td>
+                <td>{{obj.mobile}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -9,12 +9,32 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'count';
   c : number = 0;
-  page : string ="";
+  page : boolean=false;
   val : string = "";
   dis : boolean = true;
   show:boolean=true;
   title1 : string = "";
   color : string = "blue";
+  tables=[
+    {
+      name: "prasana",
+      email: "venky@gmail.com",
+      mobile: "098765493"
+    },
+    {
+      name: "suki",
+      email: "p@gmail.com",
+      mobile: "098765493"
+    },    {
+      name: "bharani",
+      email: "kumar@gmail.com",
+      mobile: "098765493"
+    },    {
+      name: "sakthi",
+      email: "velan@gmail.com",
+      mobile: "098765493"
+    }
+  ]
   title_s(){
     if (this.show) {
       this.title="Count";
